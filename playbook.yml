@@ -1,0 +1,32 @@
+---
+- hosts: nodo1
+  tasks:
+    - name: actualiza
+      apt: update_cache=yes
+    - name: instala mariadb
+      apt: name=mysql-server
+    - name: vars
+      include_vars:
+        file: vars
+    - name: instala bind9
+      apt: name=bind9
+    - name: template
+      template:
+        src: dns.j2
+        dest: /etc/bind/named.conf.local
+    - name: template2
+      template:
+        src: dns2.j2
+        dest: /var/cache/bind/db.{{ zone }}
+
+- hosts: nodo2
+  tasks:
+    - name: vars
+      include_vars:
+        file: vars
+    - name: actualiza
+      apt: update_cache=yes
+    - name: instala nginx
+      apt: name=nginx
+    - name: instala fpm
+      apt: name=php7.0-fpm
