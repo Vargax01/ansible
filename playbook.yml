@@ -18,7 +18,17 @@
       template:
         src: dns2.j2
         dest: /var/cache/bind/db.{{ zone }}
-
+    - name: conf main.cf
+      shell: sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+    - name: creacion base de datos
+      shell: mysql -u root -proot --execute="CREATE DATABASE {{ db }};"      
+    - name: creacion usuario
+      shell: mysql -u root -proot --execute="CREATE USER '{{ user }}'@'%' IDENTIFIED BY '{{ passwd }}';"
+    - name: dar privilegios
+      shell: mysql -u root -proot --execute="GRANT ALL ON {{ db }}.* TO '{{ user }}'@'%';"
+    - name: reinicio
+      systemd: state=restarted name=mysql
+      systemd: state=restarted name=bind9
 - hosts: nodo2
   tasks:
     - name: vars
