@@ -1,15 +1,15 @@
-ip_nodo1_extern: "192.168.5.2"
-ip_nodo2_extern: "192.168.5.3"
-ip_nodo1_intern: "192.168.4.1"
-ip_nodo2_intern: "192.168.4.2"
+ip_nodo1_extern: "192.168.5.2"#Ip externa nodo 1
+ip_nodo2_extern: "192.168.5.3"#Ip externa nodo 2
+ip_nodo1_intern: "192.168.4.1"#Ip interna nodo 1
+ip_nodo2_intern: "192.168.4.2"#Ip interna nodo 2
 nodo2: "nodo2" #nombre equipo nodo2
-server_name: "wordpress"
-zone: "example.com"
-db: "wordpress"
-user: "wordpress"
-passwd: "vargax" 
-title_site: "In a galaxy far, far away"
-wp_user: "darth"
-wp_password: "vader"
-mail: "darth_vader@deathstar.com"
+server_name: "wordpress"#nombre pagina web
+zone: "example.com"#zona del dns
+db: "wordpress"#nombre base de datos
+user: "wordpress"#usuario base de datos
+passwd: "vargax" #contraseña base de datos
+title_site: "In a galaxy far, far away"#nombre del sitio de wordpress
+wp_user: "darth"#usuario wordpress
+wp_password: "vader"#contraseña wordpress
+mail: "darth_vader@deathstar.com"#correo para wordpress
 
