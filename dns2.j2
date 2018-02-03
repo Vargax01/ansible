@@ -13,6 +13,6 @@ $TTL    86400
 ;
 @       IN      NS      {{ ansible_hostname }}.{{ zone }}.
 $ORIGIN {{ zone }}.
-{{ ansible_hostname }}	IN	A	{{ ansible_eth1.ipv4.address }}
-{{ nodo2 }}	IN	A	{{ ip_nodo2 }}
+{{ ansible_hostname }}	IN	A	{{ ip_nodo1_extern }}
+{{ nodo2 }}	IN	A	{{ ip_nodo2_extern }}
 {{ server_name }}	IN	CNAME {{ nodo2 }}

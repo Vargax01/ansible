@@ -26,8 +26,9 @@
       shell: mysql -u root -proot --execute="CREATE USER '{{ user }}'@'%' IDENTIFIED BY '{{ passwd }}';"
     - name: dar privilegios
       shell: mysql -u root -proot --execute="GRANT ALL ON {{ db }}.* TO '{{ user }}'@'%';"
-    - name: reinicio
+    - name: reinicio mysql
       systemd: state=restarted name=mysql
+    - name: reinicio bind9
       systemd: state=restarted name=bind9
 - hosts: nodo2
   tasks:
@@ -40,3 +41,33 @@
       apt: name=nginx
     - name: instala fpm
       apt: name=php7.0-fpm
+    - name: instala unzip
+      apt: name=unzip
+    - name: instala modulo mysql-php
+      apt: name=php7.0-mysql
+    - name: descarga wordpress
+      get_url: 
+        url: https://wordpress.org/latest.zip
+        dest: /home/vagrant/latest.zip
+    - name: descomprimir wordpress
+      unarchive:
+        src: /home/vagrant/latest.zip
+        dest: /var/www/
+        remote_src: yes
+        owner: www-data
+        group: www-data
+    - name: config wordpress
+      template:
+        src: wp-config-sample.j2
+        dest: /var/www/wordpress/wp-config-sample.php
+    - name: config virtuahost
+      template:
+        src: wordpress.j2
+        dest: /etc/nginx/sites-available/wordpress
+    - name: create symlink
+      file:
+        src=/etc/nginx/sites-available/wordpress
+        dest=/etc/nginx/sites-enabled/wordpress
+        state=link
+    - name: reinicio nginx
+      systemd: state=restarted name=nginx
