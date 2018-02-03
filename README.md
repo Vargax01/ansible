@@ -1,5 +1,5 @@
 # ansible
-Este vagranfile con dicha receta, crea automaticamente dos máquinas:
+Este vagranfile con dicha receta de ansible, crea automaticamente dos máquinas:
   -Nodo 1: Donde tenemos un servidor DNS y un servidor MariaDB
   -Nodo2: Donde hay instalado un nginx con php-fpm y configurado un wordpress
 
