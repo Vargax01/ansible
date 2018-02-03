@@ -7,4 +7,4 @@ Para el funcionamiento solo tenemos que levantar las máquinas con vagrant up y 
 
 Todos las variables que se utilizan como ip, nombre sitio wordpress, nombre dns, etc. Es configurable desde el fichero vars
 
-Nota: Si quieres tener una experiencia con ansible antes de lanzar las máquinas instala el paquete cowsay en tu máquina ;)
+Nota: Si quieres tener una experiencia diferente con ansible antes de lanzar las máquinas instala el paquete cowsay en tu máquina ;)
