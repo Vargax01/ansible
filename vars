@@ -8,3 +8,8 @@ zone: "example.com"
 db: "wordpress"
 user: "wordpress"
 passwd: "vargax" 
+title_site: "In a galaxy far, far away"
+wp_user: "darth"
+wp_password: "vader"
+mail: "darth_vader@deathstar.com"
+
